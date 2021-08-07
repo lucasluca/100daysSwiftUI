@@ -4,8 +4,9 @@ import SwiftUI
 var greeting = "Hello, playground"
 
 
+
 enum LengthMeasurement: String {
-    case meter = "m"
+    case meter
     case kilometer
     case feet
     case yards
@@ -14,3 +15,4 @@ enum LengthMeasurement: String {
 
 let test = LengthMeasurement.meter
 
+print(test.rawValue)

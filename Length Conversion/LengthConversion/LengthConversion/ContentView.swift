@@ -22,7 +22,7 @@ let conversionDictionary: [String: UnitLength] = [
 ]
 
 let lengthOptions: [LenghtUnity] = [
-    LenghtUnity(name: "Meter", simbol: "m" ),
+    LenghtUnity(name: "Meter", simbol: "m"),
     LenghtUnity(name: "Kilometer", simbol: "Km"),
     LenghtUnity(name: "Feet", simbol: "ft"),
     LenghtUnity(name: "Yards", simbol: "yd" ),
