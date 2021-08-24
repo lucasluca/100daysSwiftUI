@@ -21,6 +21,7 @@ struct ContentView: View {
                 .edgesIgnoringSafeArea(.all)
 
             VStack(spacing: 30) {
+                Spacer()
                 VStack {
                     Text("Tap the flag of")
                         .foregroundColor(.white)
