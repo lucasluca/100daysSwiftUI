@@ -10,28 +10,39 @@ import SwiftUI
 struct ContentView: View {
     
     @State private var usedWords = [String]()
-    @State private var rootWord = ""
+    @State private var rootWord = "Teste"
     @State private var newWord = ""
     
-    var body: some View {
-        List {
-            Section(header: Text("Section 1")) {
-                Text("Static row 1")
-                Text("Static row 2")
-            }
+    func addNewWord() {
+        // lowercase and trim the word, to make sure we don't add duplicate words with case differences
+        let answer = newWord.lowercased().trimmingCharacters(in: .whitespacesAndNewlines)
 
-            Section(header: Text("Section 2")) {
-                ForEach(0..<5) {
-                    Text("Dynamic row \($0)")
+        // exit if the remaining string is empty
+        guard answer.count > 0 else {
+            return
+        }
+
+        // extra validation to come
+
+        usedWords.insert(answer, at: 0)
+        newWord = ""
+    }
+    
+    var body: some View {
+        NavigationView {
+            VStack {
+                TextField("Enter your word", text: $newWord, onCommit: addNewWord)
+                    .textFieldStyle(RoundedBorderTextFieldStyle())
+                    .padding()
+                    .autocapitalization(.none)
+
+                List(usedWords, id: \.self) {
+                    Image(systemName: "\($0.count).circle")
+                    Text($0)
                 }
             }
-
-            Section(header: Text("Section 3")) {
-                Text("Static row 3")
-                Text("Static row 4")
-            }
+            .navigationBarTitle(rootWord)
         }
-        .listStyle(GroupedListStyle())
     }
 }
 
